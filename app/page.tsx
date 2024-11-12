@@ -1,21 +1,21 @@
-// app/my-page/page.js (Server Component)
-import { cookies } from 'next/headers';
+// app/SetCookieButton.js
+'use client';
+import React from 'react';
 
-export default async function MyPage() {
-  // Get the cookies object
-  const cookieStore = await cookies();
-
-  // Access a specific cookie by name
-  const myCookie = cookieStore.get('myCookieName')?.value;
+export default function SetCookieButton() {
+  const handleSetCookie = async () => {
+    try {
+      const response = await fetch('http://localhost:3000/set-cookie', { credentials: 'include' });
+      const message = await response.text();
+      alert(message);
+    } catch (error) {
+      console.error('Error setting cookie:', error);
+    }
+  };
 
   return (
-    <div>
-      <h1>Welcome to My Page</h1>
-      {myCookie ? (
-        <p>Your cookie value: {myCookie}</p>
-      ) : (
-        <p>No cookie found.</p>
-      )}
-    </div>
+    <button onClick={handleSetCookie}>
+      Set Cookie
+    </button>
   );
 }
