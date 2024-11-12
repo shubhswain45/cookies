@@ -1,9 +1,9 @@
 // app/my-page/page.js (Server Component)
 import { cookies } from 'next/headers';
 
-export default function MyPage() {
+export default async function MyPage() {
   // Get the cookies object
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
 
   // Access a specific cookie by name
   const myCookie = cookieStore.get('myCookieName')?.value;
