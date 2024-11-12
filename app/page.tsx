@@ -5,7 +5,7 @@ import React from 'react';
 export default function SetCookieButton() {
   const handleSetCookie = async () => {
     try {
-      const response = await fetch('http://localhost:3000/set-cookie', { credentials: 'include' });
+      const response = await fetch('https://another-test-server.onrender.com', { credentials: 'include' });
       const message = await response.text();
       alert(message);
     } catch (error) {
